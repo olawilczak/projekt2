@@ -1,0 +1,82 @@
+
+.App {
+  background: linear-gradient(to bottom right,#024,#402);
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.Menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App-navigation {
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+}
+
+.App-buttons {
+display: flex;
+justify-content: flex-end;
+align-items: flex-start;
+}
+
+.App-pokemons {
+  background: linear-gradient(to bottom right,#024,#402);
+  padding: 0%;
+}
+
+.App-another {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0%;
+}
+
+.Pokemons {
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(to bottom right,#024,#402);
+  padding: 0%;
+  margin: 0%;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 250px;
+  margin: 20px;
+  padding: 80px;
+  border-radius: 20px;
+  border: 1px solid #ffdd56;
+  margin-bottom: 2.5rem;
+  background: none;
+  
+}
+
+.Pokemons :hover { 
+  transform: scale(1.1);
+}
+
+.card :hover {
+  transform: none;
+}
+
+.button {
+  font-family:  sans-serif;
+  background-color: #2a75bb;
+    border-radius: #2a75bb;
+  border: 1px solid ;
+  font-size: medium;
+  padding: 8px;
+  margin: 1px;
+  border-radius: 10px;
+}
+
+

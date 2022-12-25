@@ -1,0 +1,63 @@
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+color: #fff;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-start;
+    
+    
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+   
+}
+
+.card-card {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.titles {
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffdd57;
+    border-radius: 10px;
+}
+
+.height {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.weight {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.ability {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.experience {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}

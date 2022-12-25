@@ -1,0 +1,15 @@
+.logo {
+    font-size: 300%;
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #2a75bb;
+                                                
+}
+
+.logo2 {
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #2a75bb;
+}
+
+.container {
+    background: linear-gradient(to bottom right,#024,#402)
+}
