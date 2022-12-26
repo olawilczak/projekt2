@@ -1,10 +1,14 @@
-const Arena = (()=>{
+import React from "react";
+import PokemonCard2 from "./PokemonCard2";
 
-    return (
-        <div>
-            <button className="button">Arena</button>
-        </div>
-    )
-});
+
+function Arena() {
+  return (
+    <div>
+    
+    </div>
+   
+  );
+}
 
 export default Arena;
