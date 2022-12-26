@@ -1,10 +1,16 @@
-const Favourities = (()=>{
+import React from "react";
+import PokemonCard2 from "./PokemonCard2";
 
-    return (
-        <div>
-            <button className="button">Ulubione</button>
-        </div>
-    )
-});
+
+function Favourities({favorites}) {
+  return (
+    <div>
+      {favorites.map(id  => 
+        <PokemonCard2 id={id}/>
+      )}
+    </div>
+   
+  );
+}
 
 export default Favourities;

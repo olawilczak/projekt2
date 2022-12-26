@@ -50,7 +50,7 @@ const FormulaLogo = withFormik({
     password: Yup.string().required('Password is required')
   }),
   handleSubmit: (values) => {
-    const REST_API_URL = "YOUR_REST_API_URL";
+    const REST_API_URL = "http://localhost:3000/login";
     fetch(REST_API_URL, {
       method: 'post',
       body: JSON.stringify(values)
@@ -58,14 +58,11 @@ const FormulaLogo = withFormik({
       if (response.ok) {
         return response.json();
       } else {
-        // HANDLE ERROR
         throw new Error('Something went wrong');
       }
     }).then(data => {
-      // HANDLE RESPONSE DATA
       console.log(data);
     }).catch((error) => {
-      // HANDLE ERROR
       console.log(error);
     });
   }

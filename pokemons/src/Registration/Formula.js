@@ -1,12 +1,15 @@
-import { color } from "@mui/system";
 import { useFormik } from "formik";
 import { basicSchema } from "./schemas";
+import axios from "axios";
 
 const onSubmit = async (values, actions) => {
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
+  try {
+    const response = await axios.post('http://localhost:3000/users', values);
+    console.log(response.data);
+    actions.resetForm();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const Formula = () => {
@@ -29,10 +32,6 @@ const Formula = () => {
       },
       validationSchema: basicSchema,
       onSubmit,
-
-      handleSubmit: (event) => {
-        event.preventDefault();
-      },
     });
   return (
     <div style={loginPageStyle}>
@@ -95,7 +94,7 @@ const Formula = () => {
           <p className="error">{errors.confirmPassword}</p>
         )}
       </form>
-      <button type="submit">Submit</button>
+      <button type="button" onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

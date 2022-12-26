@@ -7,6 +7,7 @@ import { red, yellow } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import GradeIcon from '@mui/icons-material/Grade';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
+import Favourities from "./Favourities";
 
 function PokemonCard({ name, url }) {
   const [state, setState] = useState([]);
@@ -34,6 +35,8 @@ function PokemonCard({ name, url }) {
       setFavorites([...favorites, name]);
     }
   };
+
+  console.log(favorites)
 
   const toggleArena = () => {
     if (arena.length < 2) {  

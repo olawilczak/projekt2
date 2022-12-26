@@ -12,6 +12,7 @@ import Pokemons from "./Pokemons";
 import FormulaLogo from "./FormulaLogo";
 import Formula from "./Registration/Formula";
 import PokemonsDetails from "./PokemonsDetails"
+import FavouritiesButton from "./FavouritiesButton";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
                 </div>
                 <div className="App-buttons">
                   <Link to="/favourities">
-                    <Favourities />
+                    <FavouritiesButton />
                   </Link>
                   <Link to="/arena">
                     <Arena />
