@@ -49,7 +49,7 @@ function PokemonCard({ name, url }) {
       setArena([...arena.slice(1), name]); 
     }
   }
-
+console.log(arena)
 
 
   if (!state) return null;
