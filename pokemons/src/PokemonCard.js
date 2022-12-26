@@ -39,7 +39,7 @@ function PokemonCard({ name, url }) {
   console.log(favorites)
 
   const toggleArena = () => {
-    if (arena.length < 2) {  
+    if (arena.length < 2 || !arena.includes(name)) {  
       if (arena.includes(name)) {
         setArena(arena.filter(pokemon => pokemon !== name));
       } else {
