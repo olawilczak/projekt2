@@ -48,7 +48,6 @@ function PokemonCard2({ name, url, id }) {
         {state?.abilities && state?.abilities[0]?.ability?.name}
       </div>
       <div className="titles">Ability</div>
-     
     </div>
   );
 }

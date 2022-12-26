@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import GradeIcon from '@mui/icons-material/Grade';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
 import Favourities from "./Favourities";
+import Arena from "./Arena";
 
 function PokemonCard({ name, url }) {
   const [state, setState] = useState([]);
