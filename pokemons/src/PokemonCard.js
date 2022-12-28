@@ -25,7 +25,7 @@ function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   };
   useEffect(() => {
     getCharacters();
-  }, []);
+  }, [url]);
 
   const toggleFavorite = () => {
     setFavorites((prev) => prev.includes(state.id) ? prev.filter((favorite) => favorite !== state.id) : [...prev, state.id])
@@ -34,7 +34,7 @@ function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   console.log(favorites)
 
   const toggleArena = () => {
-    setArena((prev) => prev.includes(name) ? prev.filter((favorite) => favorite !== name) : [...prev, name])
+    setArena((prev) => prev.includes(state.id) ? prev.filter((star) => star !== state.id) : [...prev, state.id])
   };
   
   if (arena.length>2) {
@@ -43,7 +43,7 @@ function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
 
 console.log(arena)
 
-
+console.log('stateincard', state)
 
   if (!state) return null;
   return (
@@ -53,12 +53,12 @@ console.log(arena)
       <div className="card-card"></div>
       <div className="left"></div>
       <div className="name">{name}</div>
-      <div className="height">{state?.height}</div>
+      <div className="height">{state.height}</div>
       <div className="titles">Height</div>
-      <div className="weight">{state?.weight}</div>
+      <div className="weight">{state.weight}</div>
       <div className="titles">Weight</div>
       <div className="right"></div>
-      <div className="experience">{state?.base_experience}</div>
+      <div className="experience">{state.base_experience}</div>
       <div className="titles">Base experience</div>
       <div className="ability">
         {state?.abilities && state?.abilities[0]?.ability?.name}
@@ -73,7 +73,7 @@ console.log(arena)
       )}
       </div>
       <div>
-      {arena.includes(name) ? (
+      {arena.includes(state.id) ? (
         <GradeIcon sx={{color: yellow[500]}} onClick={toggleArena} />
       ) : (
         <GradeOutlinedIcon sx={{color: yellow[500]}} onClick={toggleArena} />
