@@ -4,7 +4,7 @@ import axios from "axios";
 
 const onSubmit = async (values, actions) => {
   try {
-    const response = await axios.post('http://localhost:9000/users', values);
+    const response = await axios.post('http://localhost:3000/users', values);
     console.log(response.data);
     actions.resetForm();
   } catch (error) {
