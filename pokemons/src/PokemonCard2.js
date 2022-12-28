@@ -10,15 +10,13 @@ import Favourities from "./Favourities";
 
 function PokemonCard2({ name, url, id }) {
   const [state, setState] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [arena, setArena] = useState([]);
 
 
   useEffect(() => {
     const getCharacters = async () => {
       try {
         const result = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/?limit=15&offset=${id}`
+          `https://pokeapi.co/api/v2/pokemon/${id}`
         );
         setState(result.data.results);
       } catch (e) {

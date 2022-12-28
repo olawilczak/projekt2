@@ -13,8 +13,11 @@ import FormulaLogo from "./FormulaLogo";
 import Formula from "./Registration/Formula";
 import PokemonsDetails from "./PokemonsDetails"
 import FavouritiesButton from "./FavouritiesButton";
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [favorites, setFavorites] = useState([]);
+  const [arena, setArena] = useState([]);
   return (
     <BrowserRouter>
       <Routes>
@@ -49,12 +52,12 @@ function App() {
                 </div>
               </div>
               <div className="App-pokemons">
-                <Pokemons />  
+                <Pokemons favorites={favorites} setFavorites={setFavorites} arena={arena} setArena={setArena}/>  
               </div>
             </div>
           }
         />
-        <Route path="favourities" element={<Favourities/>}></Route>
+        <Route path="favourities" element={<Favourities favorites={favorites}/>}></Route>
         <Route path="arena" element={<Arena/>}></Route>
         <Route path="formulalogo" element={<FormulaLogo/>}></Route>
         <Route path="registration" element={<Formula/>}></Route>

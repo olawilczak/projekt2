@@ -7,7 +7,7 @@ function PokemonsDetails() {
     window.location.href = '/';
   };
 return (
-  <Link to="/" onClick={handleClick} className="button">Strona główna</Link>
+  <Link text-decoration="none" to="/" onClick={handleClick} className="button">Strona główna</Link>
 )
 }
 export default PokemonsDetails;

@@ -12,37 +12,49 @@ import { Link } from "react-router-dom";
 import PokemonDetails from "./PokemonsDetails";
 
 
-function Pokemons() {
+function Pokemons({favorites, setFavorites, arena, setArena}) {
   const [state, setState] = useState([]);
   const [query, setQuery] = useState("");
   const [newPokemons, setNewPokemons] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const [totalPages, setTotalPages] = useState(0);
+  const [prevP, setPrevP] = useState('')
+  const [nextP, setNextP] = useState('')
+  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=15&offset=0'
+  )
 
-  const handlePageChange = (direction) => {
-    if (direction === "prev" && currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    } else if (direction === "next" && currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // const handlePageChange = (direction) => {
+  //   if (direction === "prev" && currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   } else if (direction === "next" && currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
 
+  const onPrevPage = () => {
+    setUrl(prevP)
+  }
+  const onNextPage = () => {
+    setUrl(nextP)
+  }
   useEffect(() => {
     const getCharacters = async () => {
       try {
         const result = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/?limit=15&offset=${(currentPage - 1) * 15}`
-        );
+          url)
         setState(result.data.results);
-        setTotalPages(Math.ceil(result.data.count / 15));
+        // setTotalPages(Math.ceil(result.data.count / 15));
+        setPrevP(result.data.previous)
+        setNextP(result.data.next)
       } catch (e) {
         console.error(e);
       }
     };
     getCharacters();
-  }, [currentPage]);
+  }, []);
 
   console.log(state)
+  console.log('prev', prevP)
 
   useEffect(() => {
     if (state) {
@@ -83,6 +95,10 @@ function Pokemons() {
                       <PokemonCard
                         name={b.name[0].toUpperCase() + b.name.substring(1)}
                         url={b.url}
+                        favorites={favorites}
+                        setFavorites={setFavorites}
+                        arena={setArena}
+                        setArena={setArena}
                       />
                     </div>
                   )
@@ -92,6 +108,10 @@ function Pokemons() {
                       <PokemonCard
                         name={b.name[0].toUpperCase() + b.name.substring(1)}
                         url={b.url}
+                      favorites={favorites}
+                      setFavorites={setFavorites}
+                      arena={arena}
+                      setArena={setArena}
                       />
                     </div>
                   )
@@ -101,8 +121,8 @@ function Pokemons() {
           </CardActionArea>
         </Card>
         <div>
-        <button className="button" onClick={() => handlePageChange('prev')}>Poprzednia strona</button>
-        <button className="button" onClick={() => handlePageChange('next')}>Następna strona</button>
+          <button className="button" onClick={onPrevPage}>Poprzednia strona</button>
+          <button className="button" onClick={onNextPage}>Następna strona</button>
         </div>
       </div>
     </>

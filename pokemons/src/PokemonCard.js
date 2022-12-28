@@ -10,10 +10,8 @@ import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
 import Favourities from "./Favourities";
 import Arena from "./Arena";
 
-function PokemonCard({ name, url }) {
+function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   const [state, setState] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [arena, setArena] = useState([]);
 
 
   const getCharacters = async () => {
@@ -30,27 +28,21 @@ function PokemonCard({ name, url }) {
   }, []);
 
   const toggleFavorite = () => {
-    if (favorites.includes(name)) {
-      setFavorites(favorites.filter(favorite => favorite !== name));
-    } else {
-      setFavorites([...favorites, name]);
-    }
+    setFavorites((prev) => prev.includes(name) ? prev.filter((favorite) => favorite !== name) : [...prev, name])
   };
 
   console.log(favorites)
 
   const toggleArena = () => {
-    if (arena.length < 2 || !arena.includes(name)) {  
-      if (arena.includes(name)) {
-        setArena(arena.filter(pokemon => pokemon !== name));
-      } else {
-        setArena([...arena, name])
-      }
-    } else if (arena.length === 2) {  
-      setArena([...arena.slice(1), name]); 
-    }
+    setArena((prev) => prev.includes(name) ? prev.filter((favorite) => favorite !== name) : [...prev, name])
+  };
+  
+  if (arena.length>2) {
+    arena.splice(2)
   }
+
 console.log(arena)
+
 
 
   if (!state) return null;
