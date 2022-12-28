@@ -8,7 +8,7 @@ import GradeIcon from '@mui/icons-material/Grade';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
 import Favourities from "./Favourities";
 
-function PokemonCard2({ name, url, id }) {
+function PokemonCard2({ id }) {
   const [state, setState] = useState([]);
 
 
@@ -18,15 +18,15 @@ function PokemonCard2({ name, url, id }) {
         const result = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${id}`
         );
-        setState(result.data.results);
+        setState(result.data);
       } catch (e) {
         console.error(e);
       }
     };
     getCharacters();
-  });
+  },[]);
 
-
+console.log(state)
 
   if (!state) return null;
   return (
@@ -34,13 +34,13 @@ function PokemonCard2({ name, url, id }) {
       <img className="img" src={state?.sprites?.front_default} />
       <div className="card-card"></div>
       <div className="left"></div>
-      <div className="name">{name}</div>
-      <div className="height">{state?.height}</div>
+      <div className="name">{state?.name}</div>
+      <div className="height">{state.height}</div>
       <div className="titles">Height</div>
-      <div className="weight">{state?.weight}</div>
+      <div className="weight">{state.weight}</div>
       <div className="titles">Weight</div>
       <div className="right"></div>
-      <div className="experience">{state?.base_experience}</div>
+      <div className="experience">{state.base_experience}</div>
       <div className="titles">Base experience</div>
       <div className="ability">
         {state?.abilities && state?.abilities[0]?.ability?.name}

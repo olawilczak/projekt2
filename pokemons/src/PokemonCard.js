@@ -28,7 +28,7 @@ function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   }, []);
 
   const toggleFavorite = () => {
-    setFavorites((prev) => prev.includes(name) ? prev.filter((favorite) => favorite !== name) : [...prev, name])
+    setFavorites((prev) => prev.includes(state.id) ? prev.filter((favorite) => favorite !== state.id) : [...prev, state.id])
   };
 
   console.log(favorites)
@@ -66,7 +66,7 @@ console.log(arena)
       <div className="titles">Ability</div>
       </Link>
       <div>
-      {favorites.includes(name) ? (
+      {favorites.includes(state.id) ? (
         <FavoriteIcon sx={{color: red[500]}} onClick={toggleFavorite} />
       ) : (
         <FavoriteBorderIcon sx={{color: red[500]}} onClick={toggleFavorite} />
