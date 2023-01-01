@@ -61,3 +61,16 @@ color: #fff;
     text-align: center;
     color: #fff;
 }
+
+.stat {
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffdd57;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
