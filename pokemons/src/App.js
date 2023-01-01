@@ -14,6 +14,7 @@ import Formula from "./Registration/Formula";
 import PokemonsDetails from "./PokemonsDetails"
 import FavouritiesButton from "./FavouritiesButton";
 import React, { useState, useEffect } from "react";
+import ArenaButton from "./ArenaButton";
 
 function App() {
   const [favorites, setFavorites] = useState([]);
@@ -35,7 +36,7 @@ function App() {
                     <FavouritiesButton />
                   </Link>
                   <Link to="/arena">
-                    <Arena />
+                    <ArenaButton />
                   </Link>
                   <Link to="/formulalogo">
                     <Login />
@@ -58,10 +59,10 @@ function App() {
           }
         />
         <Route path="favourities" element={<Favourities favorites={favorites}/>}></Route>
-        <Route path="arena" element={<Arena/>}></Route>
+        <Route path="arena" element={<Arena arena={arena}/>}></Route>
         <Route path="formulalogo" element={<FormulaLogo/>}></Route>
         <Route path="registration" element={<Formula/>}></Route>
-        <Route path=":pokemon" element={<PokemonsDetails/>}></Route>
+        <Route path="/pokemon/:pokemon" element={<PokemonsDetails/>}></Route>
       </Routes>
     </BrowserRouter>
   );

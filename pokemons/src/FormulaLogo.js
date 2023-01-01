@@ -50,7 +50,7 @@ const FormulaLogo = withFormik({
     password: Yup.string().required('Password is required')
   }),
   handleSubmit: (values) => {
-    const REST_API_URL = "http://localhost:3000/users";
+    const REST_API_URL = "";
     fetch(REST_API_URL, {
       method: 'post',
       body: JSON.stringify(values)

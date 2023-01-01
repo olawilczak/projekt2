@@ -1,54 +1,58 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
 import axios from "axios";
+import "./PokemonCard.css";
+import { Button } from "@mui/material";
+import styled from "styled-components";
 
-const LinkStyle = styled(Link)`
-  text-decoration: none;
-  font-family:  sans-serif;
+const StyleButton = styled.button`
+font-family:  sans-serif;
   background-color: #2a75bb;
-  border-radius: #2a75bb;
+    border-radius: #2a75bb;
   border: 1px solid ;
   font-size: medium;
   padding: 8px;
   margin: 1px;
   border-radius: 10px;
+}
 `
 
-function PokemonsDetails() {
+
+function PokemonCard3({ id }) {
   const [state, setState] = useState([]);
-  
-  const { pokemon } = useParams();
+
+  const onRemove = async () => {
+    try {
+      await axios.delete(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      onRemove();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
 
   useEffect(() => {
     const getCharacters = async () => {
       try {
-        const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        const result = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon/${id}`
+        );
         setState(result.data);
       } catch (e) {
         console.error(e);
       }
     };
     getCharacters();
-  }, [pokemon]);
+  },[id]);
 
-  console.log(state)
-
-  console.log(pokemon)
-
-
-  const handleClick = () => {
-    window.location.href = '/';
-  };
+console.log(state)
 
   if (!state) return null;
   return (
     <div>
-      <div>
       <img className="img" src={state?.sprites?.front_default} />
       <div className="card-card"></div>
       <div className="left"></div>
-      <div>{state.name}</div>
+      <div>{state?.name}</div>
       <div >{state?.height}</div>
       <div className="titles">Height</div>
       <div>{state?.weight}</div>
@@ -60,9 +64,12 @@ function PokemonsDetails() {
         {state?.abilities && state?.abilities[0]?.ability?.name}
       </div>
       <div className="titles">Ability</div>
+      <div>
+        <div>{state?.stats && state?.stats[0]?.base_stat}</div>
       </div>
-      <LinkStyle to="/" onClick={handleClick}>Strona główna</LinkStyle>
+      <StyleButton onClick={onRemove}>Remove</StyleButton>
     </div>
-  )
+  );
 }
-export default PokemonsDetails;
+
+export default PokemonCard3;

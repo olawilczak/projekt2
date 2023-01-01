@@ -7,8 +7,11 @@ import { red, yellow } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import GradeIcon from '@mui/icons-material/Grade';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
-import Favourities from "./Favourities";
-import Arena from "./Arena";
+import styled from "styled-components";
+
+const LinkStyle = styled(Link)`
+text-decoration: none
+`
 
 function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   const [state, setState] = useState([]);
@@ -42,13 +45,14 @@ function PokemonCard({ name, url, favorites, setFavorites, arena, setArena }) {
   }
 
 console.log(arena)
+console.log(state)
 
 console.log('stateincard', state)
 
   if (!state) return null;
   return (
     <div>
-      <Link to="/pokemonsdetails">
+      <LinkStyle to={`/pokemon/${state.id}`}>
       <img className="img" src={state?.sprites?.front_default} />
       <div className="card-card"></div>
       <div className="left"></div>
@@ -64,7 +68,7 @@ console.log('stateincard', state)
         {state?.abilities && state?.abilities[0]?.ability?.name}
       </div>
       <div className="titles">Ability</div>
-      </Link>
+      </LinkStyle>
       <div>
       {favorites.includes(state.id) ? (
         <FavoriteIcon sx={{color: red[500]}} onClick={toggleFavorite} />

@@ -43,7 +43,7 @@ function Pokemons({favorites, setFavorites, arena, setArena}) {
   }, [url]);
 
   console.log(state)
-  console.log('prev', prevP)
+ 
 
   useEffect(() => {
     if (state) {
