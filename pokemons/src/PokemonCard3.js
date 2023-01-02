@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./PokemonCard.css";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
 
 const Background = styled.div`
@@ -38,18 +38,18 @@ display: flex;
  
 
 `
-
+const BetterPokemonRectangle = styled(TextField)`
+  background-color: ${props => (props.isBetterPokemon ? "#00FF00" : "none")};
+`;
 
 function PokemonCard3({ id}) {
     const [state, setState] = useState([]);
-    const [pokemonList, setPokemonList] = ([]);
-
+    const [pokemonList, setPokemonList] = useState([]);
 
     const onRemove = () => {
         setState(pokemonList.filter((pokemon) => pokemon.id !== id));
     };
 
-    console.log(pokemonList)
 
     useEffect(() => {
         const getCharacters = async () => {
@@ -64,7 +64,6 @@ function PokemonCard3({ id}) {
         };
         getCharacters();
     }, [id]);
-
 
 
     console.log(state)
@@ -95,6 +94,8 @@ function PokemonCard3({ id}) {
                 </div>
 
             </StyleCard>
+            <BetterPokemonRectangle isBetterPokemon={state.isBetterPokemon}>
+</BetterPokemonRectangle>
         </Background>
     );
 }

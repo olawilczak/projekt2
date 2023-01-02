@@ -24,6 +24,7 @@ justify-content: center;
 `
 
 function Arena({ arena }) {
+  
   return (
     <BackGround>
 
@@ -34,7 +35,7 @@ function Arena({ arena }) {
         )}
       </div>
 
-      <ButtonStyle disabled={arena.length <= 1}>Walcz</ButtonStyle>
+      <ButtonStyle  disabled={arena.length <= 1}>Walcz</ButtonStyle>
     </BackGround>
   );
 }
