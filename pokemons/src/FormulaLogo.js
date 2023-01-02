@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import "./Logo.css"
+import "./Logo.css";
+
 
 
 const LoginPage = (props) => {
-
   const loginPageStyle = {
     margin: "32px auto 37px",
     maxWidth: "530px",
@@ -41,6 +41,7 @@ const LoginPage = (props) => {
 
 const FormulaLogo = withFormik({
 
+
   mapPropsToValues: (props) => {
     return {
       email: props.email || '',
@@ -62,12 +63,14 @@ const FormulaLogo = withFormik({
       } else {
         throw new Error('Something went wrong');
       }
-    }).then(data => {
+    }).then((data) => {
       console.log(data);
+      const [users, setUsers] = useState(data);
+      setUsers(data);
     }).catch((error) => {
       console.log(error);
     });
   }
 })(LoginPage);
 
-export default FormulaLogo
+export default FormulaLogo;
