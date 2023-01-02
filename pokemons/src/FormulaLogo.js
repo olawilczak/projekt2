@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import "./Logo.css"
 
 
 const LoginPage = (props) => {
+
+
   const loginPageStyle = {
     margin: "32px auto 37px",
     maxWidth: "530px",
@@ -39,6 +41,7 @@ const LoginPage = (props) => {
 }
 
 const FormulaLogo = withFormik({
+
   mapPropsToValues: (props) => {
     return {
       email: props.email || '',
@@ -49,11 +52,11 @@ const FormulaLogo = withFormik({
     email: Yup.string().email('Email not valid').required('Email is required'),
     password: Yup.string().required('Password is required')
   }),
-  handleSubmit: (values) => {
-    const REST_API_URL = "";
+  handleSubmit: (props) => {
+    const REST_API_URL =
+     "http://localhost:3000/users";
     fetch(REST_API_URL, {
-      method: 'post',
-      body: JSON.stringify(values)
+      method: 'get',
     }).then(response=> {
       if (response.ok) {
         return response.json();
@@ -62,6 +65,7 @@ const FormulaLogo = withFormik({
       }
     }).then(data => {
       console.log(data);
+   
     }).catch((error) => {
       console.log(error);
     });
