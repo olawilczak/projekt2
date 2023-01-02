@@ -6,7 +6,6 @@ import "./Logo.css"
 
 const LoginPage = (props) => {
 
-
   const loginPageStyle = {
     margin: "32px auto 37px",
     maxWidth: "530px",
@@ -65,7 +64,6 @@ const FormulaLogo = withFormik({
       }
     }).then(data => {
       console.log(data);
-   
     }).catch((error) => {
       console.log(error);
     });
