@@ -27,6 +27,13 @@
     },
     {
       "id": 8
+    },
+    {
+      "name": "Ola",
+      "email": "ab@wp.pl",
+      "password": "Ola1234@",
+      "confirmPassword": "Ola1234@",
+      "id": 9
     }
   ]
 }

@@ -24,6 +24,8 @@ justify-content: center;
 `
 
 function Arena({ arena }) {
+
+  console.log(arena)
   return (
     <BackGround>
 
