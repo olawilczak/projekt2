@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import PokemonCard3 from "./PokemonCard3";
 
-const BackGround = styled.div `
+const BackGround = styled.div`
 background: linear-gradient(to bottom right,#024,#402);
 display: flex;
 flex-direction: column;
@@ -24,7 +24,6 @@ justify-content: center;
 `
 
 function Arena({ arena }) {
-  
   return (
     <BackGround>
 
@@ -35,7 +34,7 @@ function Arena({ arena }) {
         )}
       </div>
 
-      <ButtonStyle  disabled={arena.length <= 1}>Walcz</ButtonStyle>
+      <ButtonStyle disabled={arena.length <= 1}>Walcz</ButtonStyle>
     </BackGround>
   );
 }

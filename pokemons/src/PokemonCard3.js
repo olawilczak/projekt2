@@ -42,9 +42,10 @@ const BetterPokemonRectangle = styled(TextField)`
   background-color: ${props => (props.isBetterPokemon ? "#00FF00" : "none")};
 `;
 
-function PokemonCard3({ id}) {
+function PokemonCard3({ id }) {
     const [state, setState] = useState([]);
     const [pokemonList, setPokemonList] = useState([]);
+    const [isBetterPokemon, setIsBetterPokemon] = useState(false);
 
     const onRemove = () => {
         setState(pokemonList.filter((pokemon) => pokemon.id !== id));
@@ -65,8 +66,12 @@ function PokemonCard3({ id}) {
         getCharacters();
     }, [id]);
 
+    const onClick = () => {
+        setIsBetterPokemon(state.base_experience * state.weight > pokemonList[0].base_experience * pokemonList[0].weight);
+      };
+      
 
-    console.log(state)
+
 
     if (!state) return null;
     return (
@@ -94,8 +99,8 @@ function PokemonCard3({ id}) {
                 </div>
 
             </StyleCard>
-            <BetterPokemonRectangle isBetterPokemon={state.isBetterPokemon}>
-</BetterPokemonRectangle>
+            <BetterPokemonRectangle isBetterPokemon={isBetterPokemon} >
+            </BetterPokemonRectangle>
         </Background>
     );
 }

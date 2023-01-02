@@ -19,6 +19,7 @@ import ArenaButton from "./ArenaButton";
 function App() {
   const [favorites, setFavorites] = useState([]);
   const [arena, setArena] = useState([]);
+  
 
   return (
     <BrowserRouter>
